@@ -1,6 +1,7 @@
 import random
 
 def Print_MAT(MAT):
+    """print matrix in layers"""
     for x in MAT:
         print(x)
 
@@ -8,6 +9,7 @@ def exctract_clmn(b,j):
     return [row[j] for row in b]
     
 def colvec_to_mat(vec_a):
+    """Convert column vector to square matrix by zero padding"""
     col_matrix = [[0 for x in range(len(vec_a))] for y in range(len(vec_a))]
     
     for i in range(len(vec_a)):
@@ -16,6 +18,7 @@ def colvec_to_mat(vec_a):
     return col_matrix
     
 def rowvec_to_mat(vec_b):
+    """Convert row vector to square matrix by zero padding"""
     rol_matrix = [[0 for x in range(len(vec_b))] for y in range(len(vec_b))]
     
     for j in range(len(vec_b)):
@@ -28,6 +31,7 @@ def rank3TensorAdd(A,val,x,i,k):
     
     
 def rank3TensorMult(a,b):
+    """Perform 3-D by 3-D array multiplication"""
 
     h_plane = [[0 for x in range(len(a))] for y in range(len(a))]
     
@@ -71,7 +75,7 @@ def rank2TensorAdd(a,b,c,i,j):
 
 
 def rank2TensorMult(a,b):
-
+    """Perform 2-D by 2-D array multiplication"""
     c = [[0 for x in range(len(a))] for y in range(len(b))] 
 
     for i in range(len(a)): # iterate through rows
@@ -83,8 +87,9 @@ def rank2TensorMult(a,b):
 
 
 def check_dimensions(a,b):
+    """Check if dimensiosn are compatible for matrix multiplication"""
     try:
-        assert len(a)==len(b)
+        assert len(a)==len(b[0])
         return True
     except :
         print('cannot perform multiplication,incompatible dimensions')
@@ -96,10 +101,15 @@ if __name__ == "__main__":
     rank2_A=[[random.randint(1,21) for x in range(n)] for y in range(n)]
     rank2_B=[[random.randint(1,21) for x in range(n)] for y in range(n)]
 
-    rank3_A=[[[random.randint(1,5) for x in range(n)] for y in range(n)]for z in range(n)]
-    rank3_B=[[[random.randint(1,5) for x in range(n)] for y in range(n)]for z in range(n)]
+    rank3_A=[[[random.randint(1,21) for x in range(n)] for y in range(n)]for z in range(n)]
+    rank3_B=[[[random.randint(1,21) for x in range(n)] for y in range(n)]for z in range(n)]
 
-
+    print('-----------------------------RANK2-TENSOR-----------------------------')
+    if check_dimensions(rank2_A,rank2_B):
+        Print_MAT(rank2TensorMult(rank2_A,rank2_B))
+   
+    print('-----------------------------RANK3-TENSOR-----------------------------')
+    
     if check_dimensions(rank3_A,rank3_B):
         Print_MAT(rank3TensorMult(rank3_A,rank3_B))
             
