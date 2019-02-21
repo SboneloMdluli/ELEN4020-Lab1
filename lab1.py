@@ -1,6 +1,6 @@
 import random
 
-def make_verticalPlane(b,j):
+def exctract_clmn(b,j):
     return [row[j] for row in b]
     
 def colvec_to_mat(vec_a):
@@ -24,25 +24,29 @@ def rank3d(a,b):
     h_plane = [[0 for x in range(len(a))] for y in range(len(a))]
     
     rank3_C=[[[0 for x in range(n)] for y in range(n)]for z in range(n)]
-    
-    rslt_vector = Vplane_clm  = [0 for x in range(len(a))]
-    
+        
     mat_a = mat_b = [[0 for x in range(len(a))] for y in range(len(a))]
     
+    
+    rank3_C[0][1][1] =0
+    tmp=rslt_ =0
+    
     print(rank3_C)
+    
+    
 
     for i in range(len(a)): 
         h_plane = a[i]# select horizontal plane in a
         #print(h_plane,'hp')
         for j in range(len(b)):
-            v_plane = make_verticalPlane(b,j) # select vertical plane in b
+            v_plane = exctract_clmn(b,j) # select vertical plane in b
          #   print(v_plane,'vp')
             
             for k in range(len(h_plane)): #go through rows in horizontal plane
                 
                 for x in range(len(v_plane)): #go through each column in horizontal plane
-                    
-                    Vplane_clm = make_verticalPlane(v_plane,x) 
+                   
+                    Vplane_clm = exctract_clmn(v_plane,x) 
                     
                     print(h_plane[k],Vplane_clm,'row & col')
                     print('------------------------------')
@@ -54,12 +58,14 @@ def rank3d(a,b):
                     print('------------------------------')
                     print(mat_b,'colM')
                     
-                    rslt_vector[x]=rank2TensorMult(mat_a,mat_b)
-                    print('------------------------------')
-                    
-            print(rslt_vector,'single value')
-            rank3_C[i][j]=rslt_vector
-
+                    tmp=rank2TensorMult(mat_a,mat_b)
+                    rslt_ = tmp[0][0]
+                    print('------------------------------')      
+                    print(rslt_,'single value')
+                    rank3_C[x][i][k]=rslt_
+                    print('-------------ANS-----------------')   
+                    print(rank3_C)
+                    print('-------------ANS-----------------')  
     return rank3_C
 
 def rank2TensorAdd(a,b,c,i,j):
@@ -112,7 +118,7 @@ if __name__ == "__main__":
              print(x)
     print('--------------------------------')        
     if check_dimensions(rank3_A,rank3_B):
-        for x in make_verticalPlane(rank3_B,0):
+        for x in exctract_clmn(rank3_B,0):
              print(x)
     print('--------------------------------')        
     if check_dimensions(rank3_A,rank3_B):
