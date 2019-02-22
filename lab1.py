@@ -26,8 +26,8 @@ def rowvec_to_mat(vec_b):
     
     return rol_matrix
     
-def Element3D_Add(A,val,i,j,k):
-    A[j][i][k]+=val
+def Element3D_Add(A,val,x,i,k):
+    A[x][i][k]+=val
     
 
 def Element2D_Add(a,b,c,i,j):
