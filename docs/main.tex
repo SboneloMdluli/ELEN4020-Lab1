@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article} % Font size
+\input{structure.tex} 
+\title{	
+	\normalfont\largesize
+	\textbf{\textsc{University of the Witwatersrand, Johannesburg}}\\ % Your university, school and/or department name(s)
+	\textsc{School of Electrical and Information Engineering}\\ % Your university, school and/or
+	\vspace{5pt} % Whitespace
+	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
+	\vspace{10pt} % Whitespace
+	{\huge ELEN4020A: Data Intensive Computing: Lab 1}\\ % The assignment title
+	\vspace{1pt} % Whitespace
+	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
+	\vspace{1pt} % Whitespace
+}
+
+\author{ Sbonelo Mdluli(1101772), Heemal Ryan(792656), Haroon Rehman(1438756) } % Your name
+
+\date{\normalsize\today} % Today's date (\today) or a custom date
+\usepackage[ruled,vlined]{algorithm2e}
+\begin{document}
+\maketitle 
+
+\section{Introduction}
+
+\section{Rank2Tensor}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\textbf{Function name:} \emph{rank2TensorAdd}
+
+Initialization\::\\ 
+- A an B are n x n matrices\\
+- Let C be an empty n x n matrix
+
+\For{i= 1 to n}
+    {\For{j=1 to n}
+        {C[i][j] = A[i][j] + B[i][j]}}
+ \Return C
+ 
+\caption{Rank 2 Tensor Addition(A,B)}
+\end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}[H]
+\SetAlgoLined
+\textbf{Function name:} \emph{rank2TensorMult}
+
+ Initialization\::\\ 
+ - A an B are n x n matrices\\
+ - Let C be an empty n x n matrix
+ 
+ \For{i= 1 to n} {
+ \For{j=1 to n}{C[i][j] = 0\\
+ \For{k= 1 to n}{C[i][j] = C[i][j] + A[i][k] * B[k][j]}}}
+ 
+ \Return C
+ 
+\caption{Rank 2 Tensor Multiplication(A,B)}
+\end{algorithm}
+\section{Rank3Tensor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}[H]
+\SetAlgoLined
+\textbf{Function name:} \emph{rank3TensorAdd}
+
+Initialization\::\\ 
+- A an B are n x n x n matrices\\
+- Let C be an empty n x n x n matrix\\
+
+\For{i= 1 to n}{C[i] = \emph{rank2TensorAdd}(A[i],B[i])}
+\Return C
+
+\caption{Rank 3 Tensor Addition(A,B)}
+\end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bigbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}[H]
+\SetAlgoLined
+\textbf{Function name:} \emph{rank3TensorMult}
+
+Initialization\::\\ 
+- A an B are n x n x n matrices\\
+- Let C be an empty n x n x n matrix\\
+- Let hplane = matA = matB be empty n x n matrices\\
+- tmp = rslt = 0\\
+
+\For{i= 1 to n}{ hplane = A[i]\\
+\For{j= 1 to n}{ vplane = extract column(B,j)\\
+\For{k= 1 to n}{
+\For{x= 1 to n}{VplaneColumn = extract column(vplane,x)\\
+matA= RowvecToMat(hplane(k))\\
+matB= ColvecToMat(VplaneColumn)\\
+tmp= rank2TensorMult(matA,matB)\\
+rslt_ = tmp[0][0]\\
+
+}}}}
+
+\caption{Rank 3 Tensor Multiplication(A,B)}
+\end{algorithm}
+
+\section{Conclusion}\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
