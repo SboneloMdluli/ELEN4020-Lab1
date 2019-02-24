@@ -6,6 +6,7 @@ def Print_MAT(MAT):
         print(x)
 
 def exctract_clmn(b,j):
+    """Extract the j-th column in matrix b"""
     return [row[j] for row in b]
     
 def colvec_to_mat(vec_a):
@@ -74,7 +75,7 @@ def rank3TensorAdd(A,B):
     
     add_C=[[[0 for x in range(len(A))] for y in range(len(A))]for z in range(len(A))]
 
-    for i in range(len(A)): # iterate through rows
+    for i in range(len(A)): # iterate through layers
     
         add_C[i] = rank2TensorAdd(A[i],B[i])
     
@@ -115,7 +116,7 @@ def check_dimensions(a,b):
 #main program 
 if __name__ == "__main__":
     
-    n=2 # =10,=20
+    n=2 # tensor dimension
     rank2_A=[[random.randint(1,21) for x in range(n)] for y in range(n)]
     rank2_B=[[random.randint(1,21) for x in range(n)] for y in range(n)]
 
