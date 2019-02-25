@@ -28,7 +28,7 @@ Loosely defined a tensor is a mathematical object that generalizes the notion of
 \section{Procedures}
 Two matrices of dimensions $n\times n$ (or $n\times n\times n$  for 3-D) with range-based randomly generated values are created. The number of columns in the first matrix are checked to be the same number of rows in the second matrix. However, for this specific task, we have set it that only square and cubic matrices be generated as instructed. The output from the operations is formatted such that the first $n$ rows and columns represent one matrix, where $n$ is the dimension of the tensor.
 
-\subsection{2-D by 2-D matrix addition}
+\subsection{2-D matrix addition}
 Tensor addition of tensor A and tensor B is referred to as the addition corresponding elements to result a tensor of same dimensions as A and B. In this case n=2, so therefore the addition of each corresponding elements in the two  $2\times 2$ matrices gives the resultant  $2\times 2$ matrix. The use of for loops allows for the correct addition to occur. The procedure is detailed by algorithm 1. The rank2TensorAdd algorithm has a worst-case running time of $\mathcal{O}(n^2)$.
 \newline 
 \begin{algorithm}[H]
@@ -47,7 +47,7 @@ Initialization\::\\
 \caption{Rank 2 Tensor Addition for Summing 2-D by 2-D Tensors}
 \end{algorithm}
 
-\subsection{2-D by 2-D matrix multiplication}
+\subsection{2-D matrix multiplication}
 In this lab, tensors are restricted to $n$ dimensional square tensors which simplifies the multiplication computation. An empty  $2\times 2$ matrix of size equal to the one of the matrices being added is created. The resultant values are stored in the empty matrix. Equation \ref{eqn:2dmult} describes tensor multiplication of  $2\times 2$ matrices and how each element is generated in the resultant matrix.
 
 \begin{equation}
@@ -68,7 +68,7 @@ The rank2TensorMult algorithm has a worst-case running time of $\mathcal{O}(n^3)
  
  \For{i= 1 to n} {
     \For{j=1 to n}{C[i][j] = 0\\
-        \For{k= 1 to n}{C[i][j] = C[i][j] + A[i][k] * B[k][j]}}}
+        \For{k= 1 to n}{C[i][j] = C[i][j] + A[i][k] $\times$ B[k][j]}}}
  
  \Return C
  
@@ -95,9 +95,8 @@ Initialization\::\\
 \caption{Rank 3 Tensor Addition for summing 3-D by 3-D Tensors}
 \end{algorithm}
 
-\subsection{3-D by 3-D matrix multiplication}
-Each 3-D matrix is processed in layers, matrix is split into horizontal planes and matrix vertical ones. Each horizontal plane in A multiplies every vertical plane in B. The horizontal plane is split into rows and the vertical plane into columns. Each row in the horizontal plane multiplies every column in the vertical plane, this is done using the rank2TensorMult procedure. Further processing in done on the row and columns before being passed into the rank2TensorMult procedure. The row and column vectors are converted to $n \times n$ matrices by appending zeros in the remaining indices. This conversion is necessary since the rank2TensorMult only takes squares matrices. Normally the multiplication of vectors result in a single value however since we use the rank2TensorMult procedure to compute the row and column multiplication the result we get from the procedure in a square matrix. To address this only the first element of the matrix is added to the resultant matrix C.
-
+\subsection{3-D matrix multiplication}
+Each 3-D matrix is processed in layers of 2-D matrices. To perform the multiplication, we split matrix A into horizontal planes and matrix B into vertical ones. Each horizontal plane in A multiplies every vertical plane in B. The horizontal plane is split into rows and the vertical plane into columns. Each row in the horizontal plane multiplies every column in the vertical plane, this is done using the rank2TensorMult procedure. Further processing in done on the row and columns before being passed into the rank2TensorMult procedure. The row and column vectors are converted to $n \times n$ matrices by appending zeros in the remaining indices. This conversion is necessary since the rank2TensorMult only takes square matrices. Normally the multiplication of vectors result in a single value however since we use the rank2TensorMult procedure to compute the row and column multiplication, the result we get from the procedure is stored in a square matrix. Algorithm 4 below contains pseudo-code for the 3-D matrix multiplication.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}[H]
@@ -111,9 +110,9 @@ Initialization\::\\
  tmp = rslt = 0\\
 
 \For{i= 1 to n}{ hplane = A[i]\\
-    \For{j= 1 to n}{ vplane = extract_column(B,j)\\
+    \For{j= 1 to n}{ vplane = extract\_column(B,j)\\
         \For{k= 1 to n}{
-            \For{x= 1 to n}{VplaneColumn = extract_column(vplane,x)\\
+            \For{x= 1 to n}{VplaneColumn = extract\_column(vplane,x)\\
                 matA= RowvecToMat(hplane(k))\\
                 matB= ColvecToMat(VplaneColumn)\\
                 tmp= rank2TensorMult(a,b)\\
@@ -122,7 +121,7 @@ Initialization\::\\
 }}}}
 \Return C
 
-\caption{Rank 3 Tensor Multiplication(A,B)}
+\caption{Rank 3 Tensor Multiplication for computing 3-D by 3-D Tensor Product}
 \end{algorithm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}\
