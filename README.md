@@ -4,3 +4,11 @@ The group comprises of the following students: Sbonelo Mdluli(1101772), Heemal R
 ***_NOTE: n in line 119 is the dimension of the tensor and can be edited to n=10 & n=20 as in the lab brief_*** <br /> 
 run the following command to execute the program <br /> 
 ***_python lab1.py_***
+
+### Algorithms analysed
+
+| Algorithm        | Running-time   |
+| ------------- |:-------------:| 
+| Naive multiplication      | **\Omicron(n^3)**|
+| Strassen      | **\Omicron(n^2.81)**     |
+| Coppersmith-Winograd | **\Omicron(n^2.376)**     |
