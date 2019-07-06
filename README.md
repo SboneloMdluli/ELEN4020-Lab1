@@ -5,10 +5,10 @@ The group comprises of the following students: Sbonelo Mdluli(1101772), Heemal R
 run the following command to execute the program <br /> 
 ***_python lab1.py_***
 
-### Algorithms analysed
+## Algorithms analysed
 
 | Algorithm        | Running-time   |
 | ------------- |:-------------:| 
 | Naive multiplication      | <img src="http://latex.codecogs.com/svg.latex? O(n^3)" border="0"/>|
-| Strassen      | **\omega(n^2.81)**     |
-| Coppersmith-Winograd | **\omega(n^2.376)**     |
+| Strassen      | <img src="http://latex.codecogs.com/svg.latex? O(n^{log_2 7})" border="0"/>   |
+| Coppersmith-Winograd | <img src="http://latex.codecogs.com/svg.latex? O(n^2.37)" border="0"/>  |
