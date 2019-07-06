@@ -9,6 +9,6 @@ run the following command to execute the program <br />
 
 | Algorithm        | Running-time   |
 | ------------- |:-------------:| 
-| Naive multiplication      | **\omega(n^3)**|
+| Naive multiplication      | <img src="http://latex.codecogs.com/svg.latex? O(n^3)" border="0"/>|
 | Strassen      | **\omega(n^2.81)**     |
 | Coppersmith-Winograd | **\omega(n^2.376)**     |
