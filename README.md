@@ -11,4 +11,4 @@ run the following command to execute the program <br />
 | ------------- |:-------------:| 
 | Naive multiplication      | <img src="http://latex.codecogs.com/svg.latex? O(n^3)" border="0"/>|
 | Strassen      | <img src="http://latex.codecogs.com/svg.latex? O(n^{log_2 7})" border="0"/>   |
-| Coppersmith-Winograd | <img src="http://latex.codecogs.com/svg.latex? O(n^2.37)" border="0"/>  |
+| Coppersmith-Winograd | <img src="http://latex.codecogs.com/svg.latex? O(n^{2.37})" border="0"/>  |
