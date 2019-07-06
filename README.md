@@ -9,6 +9,6 @@ run the following command to execute the program <br />
 
 | Algorithm        | Running-time   |
 | ------------- |:-------------:| 
-| Naive multiplication      | **\Omicron(n^3)**|
-| Strassen      | **\Omicron(n^2.81)**     |
-| Coppersmith-Winograd | **\Omicron(n^2.376)**     |
+| Naive multiplication      | **\omega(n^3)**|
+| Strassen      | **\omega(n^2.81)**     |
+| Coppersmith-Winograd | **\omega(n^2.376)**     |
